@@ -1,12 +1,12 @@
 <?php
 
 /*
-		Plugin Name: Custom Placeholder
+		Plugin Name: PlaceHolder
 		Plugin URI:
 		Plugin Update Check URI:
 		Plugin Description: Add Custom Placeholder
 		Plugin Version: 0.1
-		Plugin Date: 2016-06-17
+		Plugin Date: 2016-06-20
 		Plugin Author: 38qa.net
 		Plugin Author URI:
 		Plugin License: GPLv2
