@@ -4,25 +4,26 @@ class qa_html_theme_layer extends qa_html_theme_base
 {
 	public function main()
 	{
+		$fields = $this->content['form']['fields'];
 		if ($this->template == 'register') {
-			$fields = $this->content['form']['fields'];
-			$placeholder = ' placeholder="' . qa_lang_html('qa_place_holder_lang/handle') . '"';
-			$fields['handle']['tags'] .= $placeholder;
-			$placeholder = ' placeholder="' . qa_lang_html('qa_place_holder_lang/password') . '"';
-			$fields['password']['tags'] .= $placeholder;
-			$placeholder = ' placeholder="' . qa_lang_html('qa_place_holder_lang/email') . '"';
-			$fields['email']['tags'] .= $placeholder;
-			$this->content['form']['fields'] = $fields;
+			$fields = $this->set_placeholder($fields, 'handle');
+			$fields = $this->set_placeholder($fields, 'password');
+			$fields = $this->set_placeholder($fields, 'email');
 		} elseif (qa_is_logged_in() && $this->template == 'ask') {
-			$fields = $this->content['form']['fields'];
-			$placeholder = ' placeholder="' . qa_lang_html('qa_place_holder_lang/title') . '"';
-			$fields['title']['tags'] .= $placeholder;
-			$placeholder = ' placeholder="' . qa_lang_html('qa_place_holder_lang/content') . '"';
-			$fields['content']['tags'] .= $placeholder;
-			$this->content['form']['fields'] = $fields;
-			// print_r($fields);
+			$fields = $this->set_placeholder($fields, 'title');
+			// $this->set_placeholder($fields, 'content');
 		}
+		$this->content['form']['fields'] = $fields;
 		qa_html_theme_base::main();
+	}
+
+	private function set_placeholder($fields = null, $name = '')
+	{
+		if (isset($fields[$name])) {
+			$placeholder = ' placeholder="' . qa_lang_html('qa_place_holder_lang/' . $name) . '"';
+			$fields[$name]['tags'] .= $placeholder;
+		}
+		return $fields;
 	}
 
 }
