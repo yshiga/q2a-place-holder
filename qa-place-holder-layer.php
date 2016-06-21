@@ -9,7 +9,7 @@ class qa_html_theme_layer extends qa_html_theme_base
 			$this->set_placeholder($fields, 'handle');
 			$this->set_placeholder($fields, 'password');
 			$this->set_placeholder($fields, 'email');
-		} elseif (qa_is_logged_in() && $this->template == 'ask') {
+		} elseif ($this->template == 'ask') {
 			$this->set_placeholder($fields, 'title');
 		}
 		$this->content['form']['fields'] = $fields;
