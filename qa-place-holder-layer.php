@@ -4,15 +4,17 @@ class qa_html_theme_layer extends qa_html_theme_base
 {
 	public function main()
 	{
-		$fields = $this->content['form']['fields'];
 		if ($this->template == 'register') {
+			$fields = $this->content['form']['fields'];
 			$this->set_placeholder($fields, 'handle');
 			$this->set_placeholder($fields, 'password');
 			$this->set_placeholder($fields, 'email');
+			$this->content['form']['fields'] = $fields;
 		} elseif ($this->template == 'ask') {
+			$fields = $this->content['form']['fields'];
 			$this->set_placeholder($fields, 'title');
+			$this->content['form']['fields'] = $fields;
 		}
-		$this->content['form']['fields'] = $fields;
 		qa_html_theme_base::main();
 	}
 
